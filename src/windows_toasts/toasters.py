@@ -297,8 +297,12 @@ class InteractableWindowsToaster(BaseWindowsToaster):
             self.defaultAUMID = False
             self.notifierAUMID = notifierAUMID
 
-        self.toastNotifier = ToastNotificationManager.create_toast_notifier_with_id(self.notifierAUMID)
-
+        #self.toastNotifier = ToastNotificationManager.create_toast_notifier_with_id(self.notifierAUMID)
+        try:
+            self.toastNotifier = ToastNotificationManager.create_toast_notifier()
+        except:
+            self.toastNotifier = ToastNotificationManager.create_toast_notifier_with_id(self.notifierAUMID)
+            
     def _setup_toast(self, toast, dynamic):
         toastContent = super()._setup_toast(toast, dynamic)
 
